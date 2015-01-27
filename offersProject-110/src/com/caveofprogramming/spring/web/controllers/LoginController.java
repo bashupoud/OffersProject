@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -40,6 +41,8 @@ public class LoginController {
 	@RequestMapping("/admin")
 	public String showAdmin(Model model) {
 		
+	//	throw new AccessDeniedException("HEllo");
+		
 		List<User> users= usersService.getAllUser();
 		model.addAttribute("users", users);
 		
@@ -51,6 +54,12 @@ public class LoginController {
 		
 		return "loggedout";
 		
+	}
+	
+	@RequestMapping("/denied")
+	public String showDenied() {	
+		
+		return "denied";
 	}
 
 	@RequestMapping(value="/createaccount", method=RequestMethod.POST)
