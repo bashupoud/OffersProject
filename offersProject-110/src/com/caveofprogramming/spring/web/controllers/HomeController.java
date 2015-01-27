@@ -15,9 +15,4 @@ public class HomeController {
 	}
 	
 	
-	@RequestMapping("/registration")
-	public String showRegistration() {
-		return "registration"; 
-	}
-
 }
